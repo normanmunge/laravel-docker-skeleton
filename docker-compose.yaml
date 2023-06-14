@@ -32,14 +32,14 @@ services:
       - ./environments/mysql.env
   composer: #utility container
     build:
-      context: ./dockerfiles
-      dockerfile: composer.dockerfile
+      context: .
+      dockerfile: dockerfiles/composer.dockerfile
     # volumes: #Bind mounts aren't recommended in production
     #   - ./src:/var/www/html
   artisan:
     build:
-      context: ./dockerfiles
-      dockerfile: php.dockerfile
+      context: .
+      dockerfile: dockerfiles/php.dockerfile
     # volumes: #Bind mounts aren't recommended in production
     #   - ./src:/var/www/html
     entrypoint: ['php', '/var/www/html/artisan'] #this reuses the php image but overrides the entrypoint if it's included otherwise sets the entrypoint
