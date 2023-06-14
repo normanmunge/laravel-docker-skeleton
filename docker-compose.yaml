@@ -7,9 +7,14 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
       - '8000:80'
-    environment:
-      - name=value
-  # php:
+    container_name: nginx
+  php:
+    build:
+      context: ./dockerfiles
+      dockerfile: php.dockerfile
+    container_name: php
+    volumes:
+      - ./src:/var/www/html:delegated
   # mysql:
   # composer:
   # artisan:
