@@ -8,7 +8,7 @@ docker compose run --rm composer create-project --prefer-dist laravel/laravel .
 docker compose up -d server php mysql
 
 
------- TO FORCE DOCKER TO RE-BUILD IMAGES WHEN STHN CHANGES ---------------
+------ TO FORCE DOCKER TO RE-BUILD IMAGES WHEN STHN IN THE IMAGE CHANGES ---------------
 
 docker compose up -d --build server
 
