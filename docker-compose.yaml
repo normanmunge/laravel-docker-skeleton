@@ -22,6 +22,14 @@ services:
     #restart: always
     env_file:
       - ./environments/mysql.env
-  # composer:
+  composer: #utility container
+    build:
+      context: ./dockerfiles
+      dockerfile: composer.dockerfile
+    volumes:
+      - ./src:/var/www/html
   # artisan:
   # npm:
+
+volumes:
+  laravel_skeleton_data:
