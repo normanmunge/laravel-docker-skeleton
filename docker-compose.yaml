@@ -40,7 +40,12 @@ services:
     volumes:
       - ./src:/var/www/html
     entrypoint: ['php', '/var/www/html/artisan'] #this reuses the php image but overrides the entrypoint if it's included otherwise sets the entrypoint
-  # npm:
+  npm:
+    image: node:14
+    working_dir: /var/www/html
+    entrypoint: ['npm']
+    volumes:
+      - ./src:/var/www/html
 
 volumes:
   laravel_skeleton_data:
