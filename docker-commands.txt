@@ -1,3 +1,8 @@
 ----- RUN COMPOSER as SINGLE CONTAINER and Install deoendencies-----
 
 docker compose run --rm composer create-project laravel/laravel .
+
+
+------- SPIN UP SPECIFIC CONTAINERS --------------------------------
+
+docker compose up -d server php mysql
