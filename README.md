@@ -17,4 +17,4 @@ The development branch has bind mounts that exposes the src folder of the Larave
 
 The main branch has a `nginx.dockerfile` that copies the laravel app and removes the bind mounts in docker compose
 
-All the commands to run the containers are described in the `docker-commands.txt`
+All the commands to run the containers are described in the `docker-commands.txt` [https://github.com/normanmunge/laravel-docker-skeleton/blob/main/docker-commands.txt]
