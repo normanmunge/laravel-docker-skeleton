@@ -9,6 +9,9 @@ services:
     ports:
       - '8000:80'
     container_name: nginx
+    depends_on:
+      - php
+      - mysql
   php:
     build:
       context: ./dockerfiles

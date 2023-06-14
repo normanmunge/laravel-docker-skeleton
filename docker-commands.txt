@@ -3,6 +3,11 @@
 docker compose run --rm composer create-project laravel/laravel .
 
 
-------- SPIN UP SPECIFIC CONTAINERS --------------------------------
+------- SPIN UP SPECIFIC CONTAINERS WHEN NO dependencies added in containers--------------------------------
 
 docker compose up -d server php mysql
+
+
+------ TO FORCE DOCKER TO RE-BUILD IMAGES WHEN STHN CHANGES ---------------
+
+docker compose up -d --build server
