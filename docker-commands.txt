@@ -11,3 +11,7 @@ docker compose up -d server php mysql
 ------ TO FORCE DOCKER TO RE-BUILD IMAGES WHEN STHN CHANGES ---------------
 
 docker compose up -d --build server
+
+
+--------  TO RUN ARTISAN UTILITY CONTAINER TO MAKE MIGRATIONS AND SET UP MYSQL INTEGRATION -----------------
+docker compose run --rm artisan migrate
