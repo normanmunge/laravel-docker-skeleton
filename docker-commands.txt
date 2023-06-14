@@ -1,6 +1,6 @@
 ----- RUN COMPOSER as SINGLE CONTAINER and Install deoendencies-----
 
-docker compose run --rm composer create-project laravel/laravel .
+docker compose run --rm composer create-project --prefer-dist laravel/laravel .
 
 
 ------- SPIN UP SPECIFIC CONTAINERS WHEN NO dependencies added in containers--------------------------------
