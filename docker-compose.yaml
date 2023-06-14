@@ -2,10 +2,13 @@ version: '3.8'
 
 services:
   server:
-    image: 'nginx:stable-alpine'
-    volumes:
-      - ./src:/var/www/html
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    # image: 'nginx:stable-alpine'
+    build:
+      context: . #need to set this to the root directory since context builds images and copies the files in the dockerfile to the folder specified. In this case, the working directory specified in the nginx.dockerfile are outside of the dockerfiles folder
+      dockerfile: dockerfiles/nginx.dockerfile
+    # volumes: #Bind mounts aren't recommended in production
+    #   - ./src:/var/www/html
+    #   - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     ports:
       - '8000:80'
     container_name: nginx
@@ -14,11 +17,11 @@ services:
       - mysql
   php:
     build:
-      context: ./dockerfiles
-      dockerfile: php.dockerfile
+      context: .
+      dockerfile: dockerfiles/php.dockerfile
     container_name: php
-    volumes:
-      - ./src:/var/www/html:delegated
+    # volumes: #Bind mounts aren't recommended in production
+    #   - ./src:/var/www/html:delegated
   mysql:
     platform: linux/x86_64
     image: 'mysql:5.7'
@@ -31,21 +34,21 @@ services:
     build:
       context: ./dockerfiles
       dockerfile: composer.dockerfile
-    volumes:
-      - ./src:/var/www/html
+    # volumes: #Bind mounts aren't recommended in production
+    #   - ./src:/var/www/html
   artisan:
     build:
       context: ./dockerfiles
       dockerfile: php.dockerfile
-    volumes:
-      - ./src:/var/www/html
+    # volumes: #Bind mounts aren't recommended in production
+    #   - ./src:/var/www/html
     entrypoint: ['php', '/var/www/html/artisan'] #this reuses the php image but overrides the entrypoint if it's included otherwise sets the entrypoint
   npm:
     image: node:14
     working_dir: /var/www/html
     entrypoint: ['npm']
-    volumes:
-      - ./src:/var/www/html
+    # volumes: #Bind mounts aren't recommended in production
+    #   - ./src:/var/www/html
 
 volumes:
   laravel_skeleton_data:
